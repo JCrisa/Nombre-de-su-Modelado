@@ -5,202 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silla Bauhaus - Joaquín Nicolás Crisafulli</title>
   
-  <!-- Carga de la librería Model Viewer de Google -->
+  <!-- Carga del visor 3D de Google -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
   
-  <!-- Tipografía limpia de inspiración Bauhaus/Swiss -->
+  <!-- Tipografía Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-cream: #f3eee3;
-      --bauhaus-red: #d82b27;
-      --bauhaus-blue: #114ba6;
-      --bauhaus-yellow: #f2be38;
-      --bauhaus-black: #111111;
-      --bauhaus-white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    body, html {
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg-cream);
-      color: var(--bauhaus-black);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Encabezado con estética geométrica Bauhaus */
-    header {
-      padding: 20px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--bg-cream);
-      border-bottom: 3px solid var(--bauhaus-black);
-      z-index: 10;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Isotipo Bauhaus inspirado en la imagen */
-    .bauhaus-icon {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      border-radius: 4px;
-      overflow: hidden;
-      border: 2px solid var(--bauhaus-black);
-    }
-    .bauhaus-icon .block-1 { background-color: var(--bauhaus-black); border-radius: 100% 0 0 0; }
-    .bauhaus-icon .block-2 { background-color: var(--bauhaus-blue); border-radius: 0 100% 0 0; }
-    .bauhaus-icon .block-3 { background-color: var(--bauhaus-yellow); }
-    .bauhaus-icon .block-4 { background-color: var(--bauhaus-red); border-radius: 0 0 100% 0; }
-
-    .header-titles h1 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
-    .header-titles p {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--bauhaus-blue);
-      letter-spacing: 0.5px;
-    }
-
-    /* Contenedor principal del Visor 3D */
-    main {
-      flex: 1;
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg-cream);
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      --poster-color: transparent;
-      background-color: var(--bg-cream);
-    }
-
-    /* Botón de Realidad Aumentada estilo Bauhaus */
-    #ar-button {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--bauhaus-yellow);
-      color: var(--bauhaus-black);
-      border: 3px solid var(--bauhaus-black);
-      padding: 16px 32px;
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-radius: 0px;
-      box-shadow: 6px 6px 0px var(--bauhaus-black);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.15s ease-in-out;
-      white-space: nowrap;
-      z-index: 20;
-    }
-
-    #ar-button:active {
-      transform: translate(-50%, 4px);
-      box-shadow: 2px 2px 0px var(--bauhaus-black);
-    }
-
-    #ar-button::before {
-      content: "";
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background-color: var(--bauhaus-red);
-      border-radius: 50%;
-      border: 2px solid var(--bauhaus-black);
-    }
-
-    /* Elementos decorativos de fondo */
-    .bg-shape-red {
-      position: absolute;
-      top: 10%;
-      right: -40px;
-      width: 120px;
-      height: 120px;
-      background-color: var(--bauhaus-red);
-      border-radius: 50%;
-      border: 3px solid var(--bauhaus-black);
-      pointer-events: none;
-      opacity: 0.85;
-    }
-
-    .bg-shape-blue {
-      position: absolute;
-      bottom: 80px;
-      left: -30px;
-      width: 90px;
-      height: 90px;
-      background-color: var(--bauhaus-blue);
-      border: 3px solid var(--bauhaus-black);
-      transform: rotate(15deg);
-      pointer-events: none;
-      opacity: 0.85;
-    }
-
-    /* Pie de página con Créditos de Autor */
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--bauhaus-black);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    footer span {
-      background-color: var(--bg-cream);
-      padding: 2px 8px;
-      border: 1px solid var(--bauhaus-black);
-    }
-
-    @media (min-width: 768px) {
-      .header-titles h1 { font-size: 1.6rem; }
-      #ar-button { font-size: 1.1rem; padding: 18px 40px; }
-    }
-  </style>
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-  <!-- Encabezado con Identidad y Autor -->
+  <!-- Lienzo de Formas Geométricas Animadas en Fondo (Desenfoque Gaussiano) -->
+  <div class="ambient-background">
+    <div class="shape shape-red"></div>
+    <div class="shape shape-yellow"></div>
+    <div class="shape shape-blue"></div>
+  </div>
+
+  <!-- Encabezado Principal -->
   <header>
     <div class="brand-logo">
       <div class="bauhaus-icon">
@@ -211,16 +36,34 @@
       </div>
       <div class="header-titles">
         <h1>Silla Bauhaus</h1>
-        <p>Diseño & Modelado 3D</p>
+        <p>Morfología & Vanguardia 3D</p>
       </div>
     </div>
   </header>
 
-  <!-- Espacio 3D e Interactividad AR -->
+  <!-- Contenedor del Visor 3D e Información -->
   <main>
-    <div class="bg-shape-red"></div>
-    <div class="bg-shape-blue"></div>
+    
+    <!-- Tarjeta de Detalles del Producto -->
+    <section class="product-info-card">
+      <span class="badge">EDICIÓN DE AUTOR</span>
+      <h2>Morfología Bauhaus</h2>
+      <p class="description">
+        Una pieza inspirada en el funcionalismo radical y la pureza geométrica de la escuela Bauhaus.
+      </p>
+      <ul class="specs-list">
+        <li>
+          <strong>Estructura:</strong>
+          <span>Patas y respaldo lineales en caño tubular continuo.</span>
+        </li>
+        <li>
+          <strong>Superficie:</strong>
+          <span>Asiento y reposo en lámina de vidrio templado.</span>
+        </li>
+      </ul>
+    </section>
 
+    <!-- Canvas 3D e Interactividad WebAR -->
     <model-viewer 
       src="modelo.glb" 
       ios-src="modelo.usdz" 
@@ -229,11 +72,11 @@
       ar-modes="webxr scene-viewer quick-look" 
       camera-controls 
       auto-rotate 
-      shadow-intensity="1.2"
-      shadow-softness="0.8"
+      shadow-intensity="1.5"
+      shadow-softness="0.5"
       exposure="1.0">
       
-      <!-- Botón de AR personalizado -->
+      <!-- Botón de Realidad Aumentada -->
       <button slot="ar-button" id="ar-button">
         Traer a la realidad
       </button>
@@ -241,7 +84,7 @@
     </model-viewer>
   </main>
 
-  <!-- Crédito al Creador -->
+  <!-- Créditos de Autor -->
   <footer>
     <span>Creado por Joaquín Nicolás Crisafulli</span>
   </footer>
