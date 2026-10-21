@@ -44,8 +44,12 @@
   <!-- Contenedor del Visor 3D e Información -->
   <main>
     
+    <!-- Botón pequeño flotante para abrir información (+info) -->
+    <button id="info-toggle-btn" aria-label="Mostrar información">+info</button>
+
     <!-- Tarjeta de Detalles del Producto -->
-    <section class="product-info-card">
+    <section id="info-card" class="product-info-card">
+      <button id="info-close-btn" aria-label="Cerrar información">✕</button>
       <span class="badge">EDICIÓN DE AUTOR</span>
       <h2>Morfología Bauhaus</h2>
       <p class="description">
@@ -88,6 +92,21 @@
   <footer>
     <span>Creado por Joaquín Nicolás Crisafulli</span>
   </footer>
+
+  <!-- Script para abrir / cerrar la ventana de información -->
+  <script>
+    const toggleBtn = document.getElementById('info-toggle-btn');
+    const closeBtn = document.getElementById('info-close-btn');
+    const infoCard = document.getElementById('info-card');
+
+    toggleBtn.addEventListener('click', () => {
+      infoCard.classList.add('is-open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      infoCard.classList.remove('is-open');
+    });
+  </script>
 
 </body>
 </html>
